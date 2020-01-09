@@ -3,7 +3,7 @@
 
 Name:           %{fontname}-fonts
 Version:        2.4.3
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Free Devanagari Script Font
 
 Group:          User Interface/X
@@ -16,6 +16,7 @@ BuildRequires: fontforge >= 20080429
 BuildRequires:  fontpackages-devel
 Requires:       fontpackages-filesystem
 Patch1: bug-578034.patch
+Patch2: bug-651713.patch
 # remove provides in f15
 Provides: lohit-marathi-fonts = %{version}-%{release}
 Provides: lohit-hindi-fonts = %{version}-%{release}
@@ -41,6 +42,7 @@ This package provides a free Devanagari Script TrueType/OpenType font.
 %prep
 %setup -q -n %{fontname}-%{version} 
 %patch1 -p1 -b .1-fix-font-conf
+%patch2 -p1 -b .2-added-rupee-symbol
 
 %build
 make
@@ -70,6 +72,9 @@ rm -fr %{buildroot}
 
 
 %changelog
+* Mon Jan 24 2011 Pravin Satpute <psatpute@redhat.com> - 2.4.3-7
+- Resolves: bug 651713
+
 * Tue May 04 2010 Pravin Satpute <psatpute@redhat.com> - 2.4.3-6
 - Resolves: bug 586858
 
