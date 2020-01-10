@@ -1,0 +1,22 @@
+diff -rup lohit-devanagari-2.5.3/65-0-lohit-devanagari.conf lohit-devanagari-2.5.3_mod/65-0-lohit-devanagari.conf
+--- lohit-devanagari-2.5.3/65-0-lohit-devanagari.conf	2013-01-30 17:31:47.000000000 +0530
++++ lohit-devanagari-2.5.3_mod/65-0-lohit-devanagari.conf	2014-02-05 16:14:07.269833921 +0530
+@@ -121,6 +121,18 @@
+   </edit>
+ </match>
+ 
++<match>
++  <test name="lang" compare="contains">
++    <string>sat</string>
++  </test>
++  <test name="family">
++    <string>sans-serif</string>
++  </test>
++  <edit name="family" mode="prepend">
++    <string>Lohit Devanagari</string>
++  </edit>
++</match>
++
+ <match target="font">
+   <test name="family" compare="eq">
+     <string>Lohit Devanagari</string>

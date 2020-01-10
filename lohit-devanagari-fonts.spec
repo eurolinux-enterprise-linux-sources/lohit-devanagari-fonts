@@ -3,7 +3,7 @@
 
 Name:           %{fontname}-fonts
 Version:        2.5.3
-Release:        2%{?dist}
+Release:        4%{?dist}
 Summary:        Free Devanagari Script Font
 Group:          User Interface/X
 License:        OFL
@@ -13,6 +13,7 @@ BuildArch:      noarch
 BuildRequires: fontforge >= 20080429
 BuildRequires:  fontpackages-devel
 Requires:       fontpackages-filesystem
+Patch1: %{name}-%{version}-bug-1061579.patch
 
 %description
 This package provides a free Devanagari Script TrueType/OpenType font.
@@ -20,6 +21,7 @@ This package provides a free Devanagari Script TrueType/OpenType font.
 %prep
 %setup -q -n %{fontname}-%{version} 
 mv 66-%{fontname}.conf 65-0-lohit-devanagari.conf
+%patch1 -p1 -b .1-added-santali-lang-in-conf-file
 
 %build
 make %{?_smp_mflags}
@@ -45,7 +47,13 @@ ln -s %{_fontconfig_templatedir}/%{fontconf} \
 
 
 %changelog
-* Tue Mar 13 2013 Pravin Satpute <psatpute@redhat.com> - 2.5.3-2
+* Thu Feb 06 2014 Pravin Satpute <psatpute@redhat.com> - 2.5.3-4
+- Resolves: rhbz#1061579 :- Added "sat" Santali language in fontconfig file
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.5.3-3
+- Mass rebuild 2013-12-27
+
+* Wed Mar 13 2013 Pravin Satpute <psatpute@redhat.com> - 2.5.3-2
 - Changed fontconf priority
 
 * Thu Jan 31 2013 Pravin Satpute <psatpute@redhat.com> - 2.5.3-1
